@@ -1,0 +1,133 @@
+<div enhance-jqm-view>
+	<div class="tabs">
+		<div class="pagination" id="pagination"></div>
+		<div class="swiper-wrapper">
+			<div id="paient_details_tab" class="tab-one tab swiper-slide">
+				<span>Patient Details</span>
+			</div>
+
+			<div id="reports_tab" class="tab-two tab swiper-slide">
+				<span>Reports</span>
+			</div>
+
+			<div id="settings_tab" class="tab-three tab swiper-slide">
+				<span>Settings</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div id="paient_details_blk" class="screen-one swiper-slide">
+				<div class="details_wrapper" >
+					<span>{{setProfilePic()}}</span>
+					<div class="photo" ng-click="openGallery()" ng-class="{male_avatar: user.gender==='Male', female_avatar: user.gender==='Female'}">&nbsp;</div>
+					<table class="details_table">
+					  <tr>
+					    <td class="td_label">Name: </td>
+					    <td>{{user.name}}</td>
+					  </tr>
+					  <tr>
+					    <td class="td_label">Age: </td>
+					    <td>{{user.age}}</td>
+					  </tr>
+					  <tr>
+					    <td class="td_label">Gender: </td>
+					    <td>{{user.gender}}</td>
+					  </tr>
+					</table>
+				</div>
+			</div>
+
+			<div id="reports_blk" class="screen-two swiper-slide">Some
+				Reports of the Blood Sugar and BP goes here
+				<div></div>	
+			</div>
+
+			<div id="settings_blk" class="screen-three swiper-slide">
+				<div  data-role="collapsible-set" data-theme="b" data-inset="false">
+
+					<div data-role="collapsible" data-collapsed="false">
+					<h3>User Settings</h3>
+					<p class="note">Enter details about the patient.</p>
+					
+					<table class="settings_table">
+					  <tr>
+					    <td class="td_label">Name: </td>
+					    <td><input type="text" id="name_field" ng-model="user.name" ng-trim="true"/></td>
+					  </tr>
+					  <tr>
+					    <td class="td_label">Age: </td>
+					    <td><input type="number" id="age_field" ng-model="user.age"/></td>
+					  </tr>
+				    </table>
+				    <table class="settings_table">
+					  <tr>
+					    <td class="td_label">Gender: </td>
+					    <td><div data-role="fieldcontain">
+						    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+					         	<input type="radio" name="radio-mini" id="sex_male" class="gender_radio" ng-model="user.gender" value="Male"/>
+					         	<label for="sex_male"> M </label>
+					
+					         	<input type="radio" name="radio-mini" id="sex_female" class="gender_radio" ng-model="user.gender" value="Female"/>
+					         	<label for="sex_female"> F </label>
+						    </fieldset>
+						</div>	
+						</td>				
+					  </tr>
+					  <tr>
+						  <td class="td_label"></td>
+						  <td class="btn_block"><input type="button" ng-click="openGallery()" value="Photo" data-mini="true"/></td>
+						  <td class="btn_block save_user">
+								<input ng-if="user.name.length > 0 && user.age > 0 && user.age != '' && user.gender != '' " ng-click="savePatientDetails()" class="save_pat_dtls"
+								 type="button" enhance-jqm-view value="Save" data-mini="true"></input>
+						  </td>
+					  </tr>
+					</table>					
+					</div>
+					
+					<div class="clear"></div>
+					
+					<div data-role="collapsible">
+						<h3>Alarm Settings</h3>
+						<p class="note">Set alarm to periodically check the BP and/or Blood Sugar.</p>
+						
+						<table class="settings_table">
+						  <tr>
+						    <td class="td_label">Label: </td>
+						    <td><input type="text" id="label_field" ng-trim="true" ng-model="alarm.label"/></td>
+						  </tr>
+						</table>
+						<table class="settings_table">
+						  <tr>
+						    <td class="td_label">Time: </td>
+						    <td class="thirty_width"><input type="text" id="hour_field" ng-model="alarm.hour" readonly/></td>
+						    <td>
+							   	<div data-role="fieldcontain">
+								    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+							         	<input type="radio" name="radio-choice-2" id="time_am" ng-model="alarm.period" value="AM" checked="checked" />
+							         	<label for="time_am">AM</label>
+							
+							         	<input type="radio" name="radio-choice-2" id="time_pm" ng-model="alarm.period" value="PM" />
+							         	<label for="time_pm">PM</label>
+								    </fieldset>
+								</div>	
+							</td>
+						  </tr>						  
+						  <tr>
+						  	<td class="td_label"></td>
+						  	<td></td>
+							<td class="btn_block"><input type="button" ng-click="setAlarm()" value="Save" data-mini="true"/></td>
+						  </tr>
+						</table>						
+					</div>
+					
+					<div data-role="collapsible">
+						<h3>Notification Settings</h3>
+						<p>Coming Soon...</p>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
