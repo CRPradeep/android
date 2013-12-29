@@ -223,8 +223,10 @@ table td:nth-child(1){
 
 .note{
 	font-size: .75em;
-	font-weight: normal;
+	font-weight: bold;
 	color: cornflowerblue;
+	text-transform: capitalize;
+	/* text-shadow: 1px 1px 0px #fff, 2px 2px 1px rgba(100,100,255,.5); */
 }
 
 #hour_field input{
@@ -234,4 +236,9 @@ table td:nth-child(1){
 .thirty_width{
 	width: 35%;
 	min-width: 5em;
+}
+
+#jqChart{
+	box-shadow: 0 0 15px #999;
+	-webkit-box-shadow: 0 0 20px #ccc;
 }

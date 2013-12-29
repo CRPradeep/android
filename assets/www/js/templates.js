@@ -117,6 +117,73 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 		}		
 	};
 	
+	var chartBackground = {
+            type: 'linearGradient',
+            x0: 0,
+            y0: 0,
+            x1: 0,
+            y1: 1,
+            colorStops: [{ offset: 0, color: '#DBEDFF' },
+                         { offset: 1, color: 'white' }]
+    };
+	
+	$('#jqChart').jqChart({
+		title: { text: "Diabetes and BP report" },
+		background: chartBackground,
+		tooltips: {
+            disabled: false,
+            highlighting: true,
+            highlightingFillStyle: 'rgba(255, 127, 255, .9)',
+            highlightingStrokeStyle: 'black'
+        },
+		legend: {
+            visible: true,
+            allowHideSeries: true,
+            location : 'bottom',            
+            border: {
+                lineWidth: 1,
+                strokeStyle: '#999'
+            },
+            font: '12px sans-serif',
+            textFillStyle: '#418CF0',
+            background: '#eeeeee',
+            margin: 5
+        },
+        border: {
+            cornerRadius: 0,
+            lineWidth: 5,
+            strokeStyle: '#fff'
+        },
+        shadows: {
+            enabled: true,
+            shadowColor: '#b8b8b8',
+            shadowBlur: 5,
+            shadowOffsetX: 2,
+            shadowOffsetY: 1
+        },
+		axes: [{
+	    	   location: 'left',
+	    	   minimum: 75,
+	    	   maximum: 350,
+	    	   interval: 50
+       }],      
+       noDataMessage: {
+           text: 'No records found!',
+           font: '14px sans-serif'
+       },
+       series: [{
+    	   	   title: 'Diabetes',
+               type: 'column',
+               cursor: 'pointer',
+               data: [['january', 321], ['february', 275], ['march', 213], ['april', 119], ['may', 147], ['june', 116],
+                      ['july', 110], ['august', 118], ['september', 101], ['october', 109], ['november', 97], ['december', 116]]
+	   }]
+	});
+	
+	$('#jqChart').bind('tooltipFormat', function (e, data) {
+        return data.x + "<br />" + data.y + " mg/dl"
+    });
+	
 });
 
 sampleApp.controller('AddHomeController', function($scope, $location, $http) {
