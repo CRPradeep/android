@@ -13,7 +13,7 @@ sampleApp.config(['$routeProvider', function($routeProvider) {
 		controller: 'AddHomeController'
 	}).
 	otherwise({
-		redirectTo: '/reports'
+		redirectTo: '/home'
 	});
 }]);
 
@@ -23,41 +23,6 @@ directive('enhanceJqmView', [function() {
 	        setTimeout(function(){$scope.$on('$viewContentLoaded', el.trigger("create"))});
 	  };
 }]);
-/*.directive('chart', function() {
-        return {
-          restrict: 'A',
-          link: function($scope, $elm, $attr) {
-            // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', '(mg/dl)');
-            data.addColumn('number', 'Blood Sugar');
-            data.addRows([
-              ['January', 300],
-              ['February', 281],
-              ['March', 213],
-              ['April', 207],
-              ['May', 174],
-              ['June', 158],
-              ['July', 140],
-              ['August', 133],
-              ['September', 112],
-              ['October', 120],
-              ['November', 99],
-              ['December', 105],
-            ]);
-
-            var name = window.localStorage.getItem("name") == null ? 'Your' : window.localStorage.getItem("name");
-            // Set chart options
-            var options = {'title': name + "'s BP and Blood Sugar Chart",
-                           'width':window.screen.availWidth-50,
-                           'height':window.screen.availHeight-100};
-
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.ColumnChart($elm[0]);
-            chart.draw(data, options);
-          }
-      }
- });*/
 
 sampleApp.controller('AddSwiperScreenController', function($scope) {
 	app.initializeTabs();
@@ -76,7 +41,8 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 		
 	$scope.user = {name : _name==null ? '' : _name,  age: (_age==null || isNaN(_age)) ? '' : _age, gender: _gender==null ? 'Male': _gender};	
 	$scope.alarm = {hour : '00.00', period : 'AM', label : 'Test BP/Sugar Now.'};
-
+	$scope.showEditBtn = false;
+	
 	$scope.savePatientDetails = function(){
 		var alertMsg;
 		if(window.localStorage.getItem("name") == $scope.user.name &&
@@ -101,13 +67,24 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 					"AlarmPlugin", "SET_ALARM", [$scope.alarm.hour.substring(0,2), $scope.alarm.period, $scope.alarm.label]);
 	};
 	
+	$scope.showOrHideEditButton = function(){
+		$scope.showEditBtn = !$scope.showEditBtn;
+	};
+	
+	$scope.hideEditButton = function(){
+		if($scope.showEditBtn){
+			$scope.showEditBtn = !$scope.showEditBtn;
+		}
+	};
+	
 	$scope.openGallery = function(){
 		navigator.camera.getPicture(function(imageURI) {
 				window.localStorage.setItem("photoUri", imageURI);
 				$scope.setProfilePic();
+				$scope.hideEditButton();
 		    },function(errorObj) {
 		    	alert("Sorry! Try again later.");
-		    }, {sourceType : Camera.PictureSourceType.PHOTOLIBRARY} );
+		    }, {sourceType : Camera.PictureSourceType.PHOTOLIBRARY} );		
 	};	
 	
 	$scope.setProfilePic = function(){
@@ -119,12 +96,9 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 	
 	var chartBackground = {
             type: 'linearGradient',
-            x0: 0,
-            y0: 0,
-            x1: 0,
-            y1: 1,
-            colorStops: [{ offset: 0, color: '#DBEDFF' },
-                         { offset: 1, color: 'white' }]
+            x0: 0, y0: 0,
+            x1: 0, y1: 1,
+            colorStops: [{ offset: 0, color: '#DBEDFF' }, { offset: 1, color: 'white' }]
     };
 	
 	$('#jqChart').jqChart({

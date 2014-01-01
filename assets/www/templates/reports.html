@@ -21,8 +21,9 @@
 			<div id="paient_details_blk" class="screen-one swiper-slide">
 				<div class="details_wrapper" >
 					<span>{{setProfilePic()}}</span>
-					<div class="photo" ng-click="openGallery()" ng-class="{male_avatar: user.gender==='Male', female_avatar: user.gender==='Female'}">&nbsp;</div>
-					<table class="details_table">
+					<div class="photo" ng-click="showOrHideEditButton()" ng-class="{male_avatar: user.gender==='Male', female_avatar: user.gender==='Female'}">&nbsp;</div>
+					<div class="edit_photo" ng-if="showEditBtn" ng-click="openGallery()" ng-class="{animated: showEditBtn, wobble: showEditBtn}"><span>Update</span></div>
+					<table class="details_table"  ng-click="hideEditButton()" >
 					  <tr>
 					    <td class="td_label">Name: </td>
 					    <td>{{user.name}}</td>

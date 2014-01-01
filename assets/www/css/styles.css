@@ -169,6 +169,17 @@ input[type="radio"]{
 	box-shadow: 0px 0px 15px #999;
 	background-size: cover;
 	-webkit-box-shadow: 0px 0px 15px #999;
+	z-index: 10000;
+}
+
+.edit_photo{
+	margin: -2.8em auto .9em auto;
+	background: rgba(125, 125, 125, .55);
+	padding: .35em 0;
+	width: 175px;
+	color: white;
+	text-shadow: 1px 1px black;
+	border: 1px solid white;
 }
 
 .male_avatar{
