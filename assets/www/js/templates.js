@@ -13,7 +13,7 @@ sampleApp.config(['$routeProvider', function($routeProvider) {
 		controller: 'AddHomeController'
 	}).
 	otherwise({
-		redirectTo: '/home'
+		redirectTo: '/reports'
 	});
 }]);
 
@@ -42,6 +42,7 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 	$scope.user = {name : _name==null ? '' : _name,  age: (_age==null || isNaN(_age)) ? '' : _age, gender: _gender==null ? 'Male': _gender};	
 	$scope.alarm = {hour : '00.00', period : 'AM', label : 'Test BP/Sugar Now.'};
 	$scope.showEditBtn = false;
+	$scope.showCharts = true;
 	
 	$scope.savePatientDetails = function(){
 		var alertMsg;
@@ -81,10 +82,11 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 		navigator.camera.getPicture(function(imageURI) {
 				window.localStorage.setItem("photoUri", imageURI);
 				$scope.setProfilePic();
-				$scope.hideEditButton();
 		    },function(errorObj) {
 		    	alert("Sorry! Try again later.");
-		    }, {sourceType : Camera.PictureSourceType.PHOTOLIBRARY} );		
+		    }, {sourceType : Camera.PictureSourceType.PHOTOLIBRARY} );	
+
+		$scope.hideEditButton();
 	};	
 	
 	$scope.setProfilePic = function(){
@@ -101,7 +103,7 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
             colorStops: [{ offset: 0, color: '#DBEDFF' }, { offset: 1, color: 'white' }]
     };
 	
-	$('#jqChart').jqChart({
+	$('.jqChart').jqChart({
 		title: { text: "Diabetes and BP report" },
 		background: chartBackground,
 		tooltips: {
@@ -154,7 +156,7 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 	   }]
 	});
 	
-	$('#jqChart').bind('tooltipFormat', function (e, data) {
+	$('.jqChart').bind('tooltipFormat', function (e, data) {
         return data.x + "<br />" + data.y + " mg/dl"
     });
 	

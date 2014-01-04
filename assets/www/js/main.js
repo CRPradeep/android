@@ -48,7 +48,7 @@ var app = {
 				offsetPxAfter : 100,
 				initialSlide: window.localStorage.getItem("name") ==null ? 2 : 0,
 				shortSwipes : true,
-				pagination: document.getElementById("pagination"),
+				/*pagination: document.getElementById("pagination"),*/
 				createPagination : true,
 				paginationClickable: true,
 				onSlideChangeEnd: app.onTabChanged,
@@ -78,8 +78,7 @@ var app = {
 		},
 		
 		onTabChanged : function(e){
-			mySwiper.swipeTo(myTabs.activeIndex, 0, false);	
-			
+			mySwiper.swipeTo(myTabs.activeIndex, 0, false);				
 			app.alignTabContent();
 		},
 
