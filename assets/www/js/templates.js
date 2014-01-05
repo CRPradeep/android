@@ -43,11 +43,25 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 	var _name = window.localStorage.getItem("name");
 	var _age = parseInt(window.localStorage.getItem("age"));
 	var _gender = window.localStorage.getItem("gender");
+	var btnTxts = ['Add New', 'Done'];
 		
 	$scope.user = {name : _name==null ? '' : _name,  age: (_age==null || isNaN(_age)) ? '' : _age, gender: _gender==null ? 'Male': _gender};	
 	$scope.alarm = {hour : '00.00', period : 'AM', label : 'Test BP/Sugar Now.'};
-	$scope.showEditBtn = false;
-	$scope.showCharts = false;
+	$scope.showPhotoEditBtn = false;
+	$scope.showCharts = true;
+	$scope.reportBtnTxt = btnTxts[0];
+	
+	$scope.showOrAddReports = function(){
+		if($scope.reportBtnTxt === btnTxts[0]){
+			$scope.reportBtnTxt = btnTxts[1];
+			$(".add_btn").buttonMarkup({ icon: "check" });
+			$scope.showCharts = false;
+		}else if($scope.reportBtnTxt === btnTxts[1]){
+			$scope.reportBtnTxt = btnTxts[0];
+			$(".add_btn").buttonMarkup({ icon: "plus" });
+			$scope.showCharts = true;
+		}
+	}
 	
 	$scope.savePatientDetails = function(){
 		var alertMsg;
@@ -74,12 +88,12 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 	};
 	
 	$scope.showOrHideEditButton = function(){
-		$scope.showEditBtn = !$scope.showEditBtn;
+		$scope.showPhotoEditBtn = !$scope.showPhotoEditBtn;
 	};
 	
 	$scope.hideEditButton = function(){
-		if($scope.showEditBtn){
-			$scope.showEditBtn = !$scope.showEditBtn;
+		if($scope.showPhotoEditBtn){
+			$scope.showPhotoEditBtn = !$scope.showPhotoEditBtn;
 		}
 	};
 	

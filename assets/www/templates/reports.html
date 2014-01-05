@@ -22,7 +22,7 @@
 				<div class="details_wrapper" >
 					<span>{{setProfilePic()}}</span>
 					<div class="photo animated swing" ng-click="showOrHideEditButton()" ng-class="{male_avatar: user.gender==='Male', female_avatar: user.gender==='Female'}">&nbsp;</div>
-					<div class="edit_photo" ng-if="showEditBtn" ng-click="openGallery()" ng-class="{animated: showEditBtn, wobble: showEditBtn}"><span>Update</span></div>
+					<div class="edit_photo" ng-if="showPhotoEditBtn" ng-click="openGallery()" ng-class="{animated: showPhotoEditBtn, wobble: showPhotoEditBtn}"><span>Update</span></div>
 					<table class="details_table animated bounceInDown"  ng-click="hideEditButton()" >
 					  <tr>
 					    <td class="td_label">Name: </td>
@@ -41,13 +41,16 @@
 			</div>
 
 			<div id="reports_blk" class="screen-two swiper-slide">
-				<p class="note capt inline_blk rprt_title" ng-if="user.name.length > 0">{{user.name}}'s</p><p class="note inline_blk rprt_title">&nbsp;Complete Record</p>
+				<p class="note capt inline_blk rprt_title" ng-if="user.name.length > 0">{{user.name}}'s</p>
+				<p class="note inline_blk rprt_title" ng-if="showCharts">&nbsp;Complete Record</p>
+				<p class="note inline_blk rprt_title" ng-if="!showCharts">&nbsp;New Report Entry</p>
+				
 				<div class="jqChart" ng-show="showCharts"></div>
 				
-				<!-- <div class="btn_blk">
-					<a href="" ng-click="" data-role="button" data-theme="c" data-inline="true" data-icon="plus" data-iconpos="notext" class="add_btn"></a>
-				</div> -->
-				
+				<div class="btn_block">
+					<a href="" ng-click="showOrAddReports()" data-role="button" data-theme="c" data-icon="plus" class="add_btn" data-mini="true" data-inline="true">{{reportBtnTxt}}</a>
+				</div>
+				<div class="clear"></div>
 				<div class="new_entry" ng-show="!showCharts">	
 					<div class="new_entry_collpsible"  data-role="collapsible-set" data-theme="b" data-inset="false">
 						<div data-role="collapsible" data-collapsed="false">
@@ -128,9 +131,9 @@
 					  </tr>
 					  <tr>
 						  <td class="td_label"></td>
-						  <td class="btn_block"><input type="button" ng-click="openGallery()" value="Photo" data-mini="true"/></td>
+						  <td class="btn_block"><input type="button" ng-click="openGallery()" value="Photo" data-mini="true" class="full_width"/></td>
 						  <td class="btn_block save_user">
-								<input ng-if="user.name.length > 0 && user.age > 0 && user.age != '' && user.gender != '' " ng-click="savePatientDetails()" class="save_pat_dtls"
+								<input ng-if="user.name.length > 0 && user.age > 0 && user.age != '' && user.gender != '' " ng-click="savePatientDetails()" class="save_pat_dtls full_width"
 								 type="button" enhance-jqm-view value="Save" data-mini="true"></input>
 						  </td>
 					  </tr>

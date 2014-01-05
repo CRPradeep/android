@@ -27,7 +27,11 @@ body {
 }
 
 div.ui-input-text input.ui-input-text{
-	padding: 0.25em 0!important; 
+	padding: 0.25em 0!important;
+}
+
+.ui-input-search, div.ui-input-text{
+	margin: 0.25em 0!important;
 }
 
 table{
@@ -40,12 +44,15 @@ input[type="radio"]{
 
 .btn_block .ui-btn{
 	border-radius: 10px !important;
-	width: 4em;
 	float: right;
 }
 
 .capt{	
 	text-transform: capitalize;
+}
+
+.full_width{
+	width: 100%;
 }
 
 .clear{
@@ -58,6 +65,10 @@ input[type="radio"]{
 
 .right{
 	float: right;
+}
+
+.txt_left{
+	text-align: left;
 }
 
 .inline_blk{
@@ -233,7 +244,12 @@ table td:nth-child(1){
 
 .settings_table .ui-field-contain{
 	margin: 0 !important;
+	padding: 0 !important;
 }
+
+.settings_table .btn_block div{
+	width: 100%;
+} 
 
 .td_label{
 	width: 30%;
@@ -280,4 +296,6 @@ table td:nth-child(1){
 	-webkit-box-shadow: 0 0 20px #ccc;
 }
 
-
+.add_btn {
+	margin-right: 1em !important;
+}
