@@ -40,10 +40,28 @@ input[type="radio"]{
 
 .btn_block .ui-btn{
 	border-radius: 10px !important;
+	width: 4em;
+	float: right;
+}
+
+.capt{	
+	text-transform: capitalize;
 }
 
 .clear{
 	clear: both;
+}
+
+.left{
+	float: left;
+}
+
+.right{
+	float: right;
+}
+
+.inline_blk{
+	display: inline-block;
 }
 
 .pagination{
@@ -132,7 +150,7 @@ input[type="radio"]{
 }
 
 .ui-collapsible-content{
-	padding: 0 .5em !important;	
+	padding: 0 .5em .5em .5em!important;	
 }
 
 .ui-collapsible-set, .ui-collapsible{
@@ -240,13 +258,11 @@ table td:nth-child(1){
 .note{
 	font-size: .75em;
 	color: #707070;
-	/* text-shadow: 1px 1px 0px #fff; */
 	text-align: left;
 }
 
-#reports_blk .note{
+.rprt_title.note{
 	font-weight: bold;
-	text-transform: capitalize;
 	text-align: center;
 }
 
@@ -264,34 +280,4 @@ table td:nth-child(1){
 	-webkit-box-shadow: 0 0 20px #ccc;
 }
 
-.new_entry table{
-	
-}
-
-.new_entry table td:nth-child(odd){
-	width: 25%;
-}
-
-.new_entry table td:nth-child(even){
-	width: 50%;
-}
-
-.new_entry table td a{
-	margin: auto;
-	padding: 5px;
-	border-radius: 0;
-	background: rgb(220, 220, 220);	
-}
-
-.new_entry table td a .ui-btn-inner{
-	border: none;
-}
-
-.new_entry table td a .ui-icon{
-	/* background: transparent !important{global-icon-disc};
-	background-image: url(images/icons-18-white.png) {global-icon-set};
-	background-repeat: no-repeat !important;
-	border: none !important;
-	box-shadow: 0 0 0 transparent !important; */
-}
 

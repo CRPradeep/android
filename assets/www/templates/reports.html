@@ -41,26 +41,57 @@
 			</div>
 
 			<div id="reports_blk" class="screen-two swiper-slide">
-				<p class="note">{{user.name}}'s complete record</p>
-				<div class="jqChart"></div>
+				<p class="note capt inline_blk rprt_title" ng-if="user.name.length > 0">{{user.name}}'s</p><p class="note inline_blk rprt_title">&nbsp;Complete Record</p>
+				<div class="jqChart" ng-show="showCharts"></div>
+				
 				<!-- <div class="btn_blk">
 					<a href="" ng-click="" data-role="button" data-theme="c" data-inline="true" data-icon="plus" data-iconpos="notext" class="add_btn"></a>
 				</div> -->
-				<div class="new_entry">
-					<table>
-						<tbody>
-							<tr>
-								<td><a href="" ng-click="" data-role="button" data-theme="c" data-icon="plus" data-iconpos="notext" class="add_btn"></a></td>
-								<td><input type="number" /></td>
-								<td><a href="" ng-click="" data-role="button" data-theme="c" data-icon="check" data-iconpos="notext" class="done_btn"></a></td>
-							</tr>
-							<tr>
-								<td><a href="" ng-click="" data-role="button" data-theme="c" data-icon="plus" data-iconpos="notext" class="add_btn"></a></td>
-								<td><input type="number" /></td>
-								<td><a href="" ng-click="" data-role="button" data-theme="c" data-icon="check" data-iconpos="notext" class="done_btn"></a></td>
-							</tr>
-						</tbody>
-					</table>
+				
+				<div class="new_entry" ng-show="!showCharts">	
+					<div class="new_entry_collpsible"  data-role="collapsible-set" data-theme="b" data-inset="false">
+						<div data-role="collapsible" data-collapsed="false">
+							<h3>BP Report</h3>
+							<p class="note">Add new result of BP report.</p>
+							<table>
+								<tbody>
+									<tr>
+										<td class="td_label">Result: </td>
+										<td><input type="number" placeholder="mmHg" class="new_bp_res"/> </td>	
+									</tr>
+									<tr>
+										<td class="td_label">Date: </td>
+										<td><input type="text" id="bp_month_field" placeholder="select date" readonly/> </td>	
+									</tr>
+								</tbody>
+							</table>
+							<div class="btn_block">
+								<input ng-click="" class="bp_save_btn right" type="button" value="Save" data-mini="true"></input>
+							</div>
+							<div class="clear"></div>
+						</div>
+						
+						<div data-role="collapsible">
+							<h3>Diabetes Report</h3>
+							<p class="note">Add new result of Diabetes report.</p>
+							<table>
+								<tbody>
+									<tr>
+										<td class="td_label">Result: </td>
+										<td><input type="number" placeholder="mg/dl" class="new_diabetes_res"/> </td>	
+									</tr>
+									<tr>
+										<td class="td_label">Date: </td>
+										<td><input type="text" id="diabetes_month_field" placeholder="select date" readonly/> </td>	
+									</tr>
+								</tbody>
+							</table>
+							<div class="btn_block">
+								<input ng-click="" class="diabetes_save_btn right" type="button" value="Save" data-mini="true"></input>
+							</div>	
+							<div class="clear"></div>								
+						</div>	
+					</div>					
 				</div>
 			</div>
 

@@ -35,6 +35,11 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 		format:'H:i'
 	});
 	
+	$('#bp_month_field, #diabetes_month_field').datetimepicker({
+		timepicker:false,
+		 format:'d.m.Y'
+	});
+	
 	var _name = window.localStorage.getItem("name");
 	var _age = parseInt(window.localStorage.getItem("age"));
 	var _gender = window.localStorage.getItem("gender");
@@ -42,7 +47,7 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 	$scope.user = {name : _name==null ? '' : _name,  age: (_age==null || isNaN(_age)) ? '' : _age, gender: _gender==null ? 'Male': _gender};	
 	$scope.alarm = {hour : '00.00', period : 'AM', label : 'Test BP/Sugar Now.'};
 	$scope.showEditBtn = false;
-	$scope.showCharts = true;
+	$scope.showCharts = false;
 	
 	$scope.savePatientDetails = function(){
 		var alertMsg;
