@@ -13,7 +13,7 @@ sampleApp.config(['$routeProvider', function($routeProvider) {
 		controller: 'AddHomeController'
 	}).
 	otherwise({
-		redirectTo: '/reports'
+		redirectTo: '/home'
 	});
 }]);
 
@@ -24,7 +24,7 @@ directive('enhanceJqmView', [function() {
 	  };
 }]);
 
-sampleApp.controller('AddSwiperScreenController', function($scope) {
+sampleApp.controller('AddSwiperScreenController', function($scope, $timeout) {
 	app.initializeTabs();
 	app.initializeSwiperScreen();
 
@@ -47,11 +47,15 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 		
 	$scope.user = {name : _name==null ? '' : _name,  age: (_age==null || isNaN(_age)) ? '' : _age, gender: _gender==null ? 'Male': _gender};	
 	$scope.alarm = {hour : '00.00', period : 'AM', label : 'Test BP/Sugar Now.'};
+	$scope.reports = [['january', 321], ['february', 275], ['march', 213], ['april', 119], ['may', 147], ['june', 116],
+                      ['july', 110], ['august', 118], ['september', 101], ['october', 109], ['november', 97], ['december', 116]];
 	$scope.showPhotoEditBtn = false;
 	$scope.showCharts = true;
 	$scope.reportBtnTxt = btnTxts[0];
+	$scope.showProgress = false;
 	
 	$scope.showOrAddReports = function(){
+		
 		if($scope.reportBtnTxt === btnTxts[0]){
 			$scope.reportBtnTxt = btnTxts[1];
 			$(".add_btn").buttonMarkup({ icon: "check" });
@@ -103,7 +107,7 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
 				$scope.setProfilePic();
 		    },function(errorObj) {
 		    	alert("Sorry! Try again later.");
-		    }, {sourceType : Camera.PictureSourceType.PHOTOLIBRARY} );	
+		    }, {sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM} );	
 
 		$scope.hideEditButton();
 	};	
@@ -133,7 +137,7 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
         },
 		legend: {
             visible: true,
-            allowHideSeries: true,
+            allowHideSeries: false,
             location : 'bottom',            
             border: {
                 lineWidth: 1,
@@ -170,8 +174,7 @@ sampleApp.controller('AddSwiperScreenController', function($scope) {
     	   	   title: 'Diabetes',
                type: 'column',
                cursor: 'pointer',
-               data: [['january', 321], ['february', 275], ['march', 213], ['april', 119], ['may', 147], ['june', 116],
-                      ['july', 110], ['august', 118], ['september', 101], ['october', 109], ['november', 97], ['december', 116]]
+               data: $scope.reports
 	   }]
 	});
 	

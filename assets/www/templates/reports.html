@@ -1,4 +1,7 @@
 <div enhance-jqm-view>
+	<div class="loading_popup" ng-if="showProgress">
+		<div class="heart_pumping animated pulse">Loading...</div>
+	</div>
 	<div class="tabs">
 		<!-- <div class="pagination" id="pagination"></div> -->
 		<div class="swiper-wrapper">
@@ -108,11 +111,11 @@
 					<table class="settings_table">
 					  <tr>
 					    <td class="td_label">Name: </td>
-					    <td><input type="text" id="name_field" ng-model="user.name" ng-trim="true"/></td>
+					    <td><input type="text" id="name_field" ng-model="user.name" ng-trim="true" /></td>
 					  </tr>
 					  <tr>
 					    <td class="td_label">Age: </td>
-					    <td><input type="number" id="age_field" ng-model="user.age"/></td>
+					    <td><input type="number" id="age_field" ng-model="user.age" /></td>
 					  </tr>
 				    </table>
 				    <table class="settings_table">
@@ -133,8 +136,8 @@
 						  <td class="td_label"></td>
 						  <td class="btn_block"><input type="button" ng-click="openGallery()" value="Photo" data-mini="true" class="full_width"/></td>
 						  <td class="btn_block save_user">
-								<input ng-if="user.name.length > 0 && user.age > 0 && user.age != '' && user.gender != '' " ng-click="savePatientDetails()" class="save_pat_dtls full_width"
-								 type="button" enhance-jqm-view value="Save" data-mini="true"></input>
+								<a ng-if="user.name.length > 0 && user.age > 0 && user.age != '' && user.gender != '' " ng-click="savePatientDetails()" class="save_pat_dtls full_width"
+								 data-role="button" href="" data-mini="true" enhance-jqm-view>Save</a>
 						  </td>
 					  </tr>
 					</table>					
